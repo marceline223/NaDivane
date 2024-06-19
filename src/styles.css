@@ -1,0 +1,13 @@
+.bordered {
+  border: 1px solid black;
+}
+
+.background {
+  /*background-color: azure;*/
+}
+
+.content {
+  width: 90%;
+  margin: auto;
+  /*background-color: white;*/
+}
