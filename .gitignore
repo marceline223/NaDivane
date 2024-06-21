@@ -42,4 +42,4 @@ testem.log
 Thumbs.db
 /.editorconfig
 /.browserslistrc
-/src/assets/.gitkeep
+/apps/client/src/assets/.gitkeep
