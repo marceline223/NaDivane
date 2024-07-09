@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'item-card',
   templateUrl: './ItemCard.html',
-  inputs: ['id']
+  inputs: ['item']
 })
 export class ItemCard {
   title = 'ItemCard';
 
-  
+  @Input() item: string = "";
 }

@@ -1,41 +1,24 @@
-import {Component, OnInit} from '@angular/core';
-import {ItemEntity} from "../item-card/ItemEntity";
+import {Component} from '@angular/core';
+import { Item } from '../../models/item.model'
 
 @Component({
   selector: 'item-list',
   templateUrl: './ItemList.html',
 })
-export class ItemList implements OnInit{
+export class ItemList{
   title = 'ItemList';
 
-  products: ItemEntity[] | undefined;
+  list: Item[] = [];
 
-  ngOnInit() {
-    this.products = [
-      {
-        id: 0,
-        name: 'Продукт 1',
-        description: 'Описание продукта 1',
-        price: 17.5,
-      },
-      {
-        id: 1,
-        name: 'Продукт 2',
-        description: 'Описание продукта 2',
-        price: 230.99,
-      },
-      {
-        id: 2,
-        name: 'Продукт 3',
-        description: 'Описание продукта 3',
-        price: 11,
-      },
-      {
-        id: 3,
-        name: 'Продукт 4',
-        description: 'Описание продукта 4',
-        price: 500,
-      },
-    ]
-  }
+  //constructor(private itemService: ItemService) {}
+
+  // ngOnInit(): void {
+  //   this.getItems();
+  // }
+
+  // getItems(): void {
+  //   this.itemService.getItems().subscribe((items) => {
+  //     this.items = items;
+  //   });
+  // }
 }

@@ -53,4 +53,6 @@ export class HeaderComponent implements OnInit{
       }
     ]
   }
+
+  isAddItemDialogVisible: boolean = false;
 }

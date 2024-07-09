@@ -1,0 +1,39 @@
+<p-button
+  class="mr-3"
+  icon="pi pi-plus"
+  (click)="onClickShowDialog()"
+/>
+
+<p-dialog header="Добавить товар" [modal]="true" [(visible)]="visible" class="flex-auto">
+  <form  [formGroup]="itemForm">
+    <div class="flex align-items-center gap-3 mb-5">
+      <label for="category" class="font-semibold w-10rem" pStyleClass="w-10rem" styleClass="w-10rem" panelStyleClass="w-10rem">Категория</label>
+      <p-dropdown
+        [options]="categories"
+        formControlName="category"
+        [showClear]="true"
+        id="category"
+        optionLabel="name"
+        placeholder="Выберите категорию"
+      />
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+      <label for="name" class="font-semibold w-10rem">Наименование</label>
+      <input pInputText id="name" class="flex-auto" autocomplete="off" formControlName="name"/>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+      <label for="description" class="font-semibold w-10rem">Описание</label>
+      <textarea rows="5" pInputTextarea id="description" class="flex-auto" autocomplete="off" formControlName="description"></textarea>
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+      <label for="price" class="font-semibold w-10rem">Цена</label>
+      <p-inputNumber  formControlName="price" title="Цена" id="price" inputId="price" class="flex-auto" mode="decimal" [maxFractionDigits]="2"/>
+    </div>
+  </form>
+
+  <div class="flex justify-content-end gap-2">
+    <p-button label="Cancel" severity="secondary" (click)="visible = false" />
+    <p-button label="Save" (click)="onClickSave()" />
+  </div>
+</p-dialog>
+
