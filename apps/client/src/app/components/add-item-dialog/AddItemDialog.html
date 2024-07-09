@@ -4,30 +4,42 @@
   (click)="onClickShowDialog()"
 />
 
-<p-dialog header="Добавить товар" [modal]="true" [(visible)]="visible" class="flex-auto">
-  <form  [formGroup]="itemForm">
-    <div class="flex align-items-center gap-3 mb-5">
-      <label for="category" class="font-semibold w-10rem" pStyleClass="w-10rem" styleClass="w-10rem" panelStyleClass="w-10rem">Категория</label>
+<p-dialog header="Добавить товар" [modal]="true" [(visible)]="visible" class="flex-auto" [style]="{'width': '600px'}">
+  <form  [formGroup]="itemForm" class="col-12">
+    <div class="flex align-items-center gap-3 mb-3">
+      <label for="category" class="font-semibold col-4">Категория</label>
       <p-dropdown
         [options]="categories"
         formControlName="category"
         [showClear]="true"
         id="category"
+        autoWidth="false"
         optionLabel="name"
         placeholder="Выберите категорию"
+        class="col-8 p-0 max-w-full"
+        [style]="{'min-width': '96%'}"
       />
     </div>
     <div class="flex align-items-center gap-3 mb-3">
-      <label for="name" class="font-semibold w-10rem">Наименование</label>
-      <input pInputText id="name" class="flex-auto" autocomplete="off" formControlName="name"/>
+      <label for="name" class="font-semibold col-4">Наименование</label>
+      <input pInputText id="name" class="flex-auto col-8" autocomplete="off" formControlName="name"/>
     </div>
     <div class="flex align-items-center gap-3 mb-3">
-      <label for="description" class="font-semibold w-10rem">Описание</label>
-      <textarea rows="5" pInputTextarea id="description" class="flex-auto" autocomplete="off" formControlName="description"></textarea>
+      <label for="description" class="font-semibold col-4">Описание</label>
+      <textarea rows="5" pInputTextarea id="description" class="flex-auto col-8" autocomplete="off" formControlName="description"></textarea>
     </div>
     <div class="flex align-items-center gap-3 mb-3">
-      <label for="price" class="font-semibold w-10rem">Цена</label>
-      <p-inputNumber  formControlName="price" title="Цена" id="price" inputId="price" class="flex-auto" mode="decimal" [maxFractionDigits]="2"/>
+      <label for="price" class="font-semibold col-4">Цена</label>
+      <p-inputNumber
+        formControlName="price"
+        title="Цена"
+        id="price"
+        inputId="price"
+        class="flex-auto col-8 p-0 max-w-full"
+        mode="decimal"
+        [maxFractionDigits]="2"
+        [style]="{'width': '100%'}"
+      />
     </div>
   </form>
 
