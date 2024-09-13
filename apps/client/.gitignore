@@ -12,7 +12,7 @@ npm-debug.log
 yarn-error.log
 
 # IDEs and editors
-.idea/
+../../.idea/
 .project
 .classpath
 .c9/
@@ -42,7 +42,7 @@ testem.log
 Thumbs.db
 /.editorconfig
 /.browserslistrc
-/apps/client/src/assets/.gitkeep
+src/assets/.gitkeep
 
 # compiled output
 /build

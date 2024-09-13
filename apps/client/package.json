@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start-client": "ng serve --proxy-config apps/client/src/proxy.config.json",
+    "start-client": "ng serve --proxy-config src/proxy.config.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -20,6 +20,7 @@
     "@angular/router": "~17.3.8",
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
+    "ngx-trim": "^1.0.1",
     "pg": "^8.12.0",
     "primeflex": "^3.3.1",
     "primeicons": "^7.0.0",
