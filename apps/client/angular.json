@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SplitCheck": {
+    "NaDivane": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/split-check",
+            "outputPath": "dist/na-divane",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -27,7 +27,7 @@
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeflex/primeflex.css",
               "node_modules/primeicons/primeicons.css",
-              "src/styles.css"
+              "src/styles.css",
             ],
             "scripts": []
           },
@@ -68,10 +68,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "SplitCheck:build:production"
+              "browserTarget": "NaDivane:build:production"
             },
             "development": {
-              "browserTarget": "SplitCheck:build:development"
+              "browserTarget": "NaDivane:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -79,7 +79,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "SplitCheck:build"
+            "browserTarget": "NaDivane:build"
           }
         },
         "test": {
