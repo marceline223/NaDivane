@@ -1,7 +1,10 @@
 <p-card
   [header]="item?.name"
   [subheader]="item?.category?.name"
-  [style]="{ width: '200px', margin: '15px' }"
+  styleClass="item-card"
+  pStyleClass="item-card"
+  class="item-card"
+  [style]="{ width: '250px', margin: '15px' }"
 >
   <ng-template pTemplate="header">
     <div class="image-container">
@@ -12,6 +15,10 @@
       />
     </div>
   </ng-template>
+
+  <div>
+    {{ item?.description }}
+  </div>
 
   <ng-template pTemplate="footer">
       <p-button label="В корзину" styleClass="w-full" size="small" />

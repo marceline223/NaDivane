@@ -3,6 +3,10 @@
   width: 350px !important;
   max-width: 350px;
   /*height: 200px;*/
+  .p-card-body {
+    font-size: 8pt !important;
+    color: red !important;
+  }
 }
 
 .item-card-image {
@@ -24,3 +28,5 @@
   height: 150px; /* Задай фиксированную высоту для изображений */
   overflow: hidden;
 }
+
+

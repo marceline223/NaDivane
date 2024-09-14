@@ -4,7 +4,7 @@ import { Item } from '../../models/item.model';
 @Component({
   selector: 'item-card',
   templateUrl: './ItemCard.html',
-  styleUrl: './ItemCard.css',
+  styleUrl: './ItemCard.scss',
   inputs: ['item']
 })
 export class ItemCard {
