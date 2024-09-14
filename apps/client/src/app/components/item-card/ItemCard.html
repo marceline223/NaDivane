@@ -1,0 +1,26 @@
+<p-card
+  [header]="item?.name"
+  [subheader]="item?.category?.name"
+  styleClass="item-card"
+  pStyleClass="item-card"
+  class="item-card"
+  [style]="{ width: '250px', margin: '15px' }"
+>
+  <ng-template pTemplate="header">
+    <div class="image-container">
+      <p-image
+        [src]="item?.imageUrl || defaultImageUrl"
+        alt="Card image"
+        [style]="{width: '100%', height: '150px', 'object-fit': 'cover'}"
+      />
+    </div>
+  </ng-template>
+
+  <div>
+    {{ item?.description }}
+  </div>
+
+  <ng-template pTemplate="footer">
+      <p-button label="В корзину" styleClass="w-full" size="small" />
+  </ng-template>
+</p-card>

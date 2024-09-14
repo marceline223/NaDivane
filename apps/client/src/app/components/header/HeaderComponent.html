@@ -1,0 +1,21 @@
+<p-menubar [model]="items" class="mb-5">
+  <ng-template pTemplate="start">
+    <div class="flex align-items-center gap-3 mr-5">
+      <a routerLink="">
+        <p-image
+          src="favicon.ico"
+          alt="logo"
+          width="50px"
+        />
+      </a>
+      <h2>Магазин NaDivane</h2>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <add-item-dialog (itemAdded)="onItemAdded($event)" />
+    <span class="p-input-icon-left">
+    <i class="pi pi-search"></i>
+    <input pInputText placeholder="Search" />
+  </span>
+  </ng-template>
+</p-menubar>
