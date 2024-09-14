@@ -1,4 +1,4 @@
-<p-menubar [model]="items">
+<p-menubar [model]="items" class="mb-5">
   <ng-template pTemplate="start">
     <div class="flex align-items-center gap-3 mr-5">
       <a routerLink="">
@@ -12,7 +12,7 @@
     </div>
   </ng-template>
   <ng-template pTemplate="end">
-    <add-item-dialog />
+    <add-item-dialog (itemAdded)="onItemAdded($event)" />
     <span class="p-input-icon-left">
     <i class="pi pi-search"></i>
     <input pInputText placeholder="Search" />

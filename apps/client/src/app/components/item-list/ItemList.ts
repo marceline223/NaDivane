@@ -1,5 +1,6 @@
-import {Component} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import { Item } from '../../models/item.model'
+import {ItemApiService} from "../../../../api/endpoints/item.service";
 
 @Component({
   selector: 'item-list',
@@ -10,15 +11,18 @@ export class ItemList{
 
   list: Item[] = [];
 
-  //constructor(private itemService: ItemService) {}
+  constructor(private itemService: ItemApiService,
+              private cRef: ChangeDetectorRef,) {}
 
-  // ngOnInit(): void {
-  //   this.getItems();
-  // }
+  ngOnInit(): void {
+    this.getItems();
+  }
 
-  // getItems(): void {
-  //   this.itemService.getItems().subscribe((items) => {
-  //     this.items = items;
-  //   });
-  // }
+  getItems(): void {
+    const items$ = this.itemService.getItems();
+    items$.subscribe((items) => {
+        this.list = items;
+        this.cRef.detectChanges();
+    });
+  }
 }

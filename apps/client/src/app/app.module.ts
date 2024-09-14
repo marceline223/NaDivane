@@ -22,9 +22,12 @@ import {DialogModule} from "primeng/dialog";
 import {InputNumberModule} from "primeng/inputnumber";
 import {InputTextareaModule} from "primeng/inputtextarea";
 import {DropdownModule} from "primeng/dropdown";
-import {FormBuilder, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {StyleClassModule} from "primeng/styleclass";
 import {HttpClientModule} from "@angular/common/http";
+import { FileUploadModule } from 'primeng/fileupload';
+import {CommonModule} from "@angular/common";
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,7 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserModule,
     BrowserAnimationsModule,
     Button,
+    CommonModule,
     ToolbarModule,
     InputTextModule,
     RouterOutlet,
@@ -56,6 +60,8 @@ import {HttpClientModule} from "@angular/common/http";
     ReactiveFormsModule,
     StyleClassModule,
     HttpClientModule,
+    FileUploadModule,
+    CardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,46 +1,22 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, EventEmitter, Output} from '@angular/core';
 import { Item } from '../../models/item.model'
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Category } from "../../models/category.model";
 import { CategoryApiService } from "../../../../api/endpoints/category.service";
+import { ItemApiService } from "../../../../api/endpoints/item.service";
 
 @Component({
   selector: 'add-item-dialog',
   templateUrl: './AddItemDialog.html',
 })
 export class AddItemDialog implements OnInit{
+  @Output() itemAdded = new EventEmitter<Item>();
+
   title = 'AddItemDialog';
 
   visible: boolean = false;
 
-  categories: Category[] = [
-    {
-      id: 0,
-      name: 'Категория0',
-    },
-    {
-      id: 1,
-      name: 'Категория1',
-    },
-    {
-      id: 2,
-      name: 'Категория2',
-    },
-    {
-      id: 3,
-      name: 'Категория3',
-    },
-    {
-      id: 4,
-      name: 'Категория4',
-    },
-    {
-      id: 5,
-      name: 'Категория5',
-    },
-  ];
-
-  category: Category | null = null;
+  categories: Category[] | undefined;
 
   emptyItem: Item = {
     id: 0,
@@ -56,27 +32,24 @@ export class AddItemDialog implements OnInit{
 
   constructor(
     private categoryApiService: CategoryApiService,
+    private itemApiService: ItemApiService,
     private cRef: ChangeDetectorRef,
   ) {
     this.itemForm = new FormGroup({
       name: new FormControl(this.value?.name, Validators.required),
-      description: new FormControl(this.value?.description, Validators.required),
+      description: new FormControl(this.value?.description),
       category: new FormControl(this.value?.category, Validators.required),
       price: new FormControl(this.value?.price, [Validators.required, Validators.min(0.0)]),
       imageUrl: new FormControl(['']),
     });
+  }
 
-    // this.itemForm = this.fb.group({
-    //   name: [this.value.name, Validators.required],
-    //   description: [this.value.description, Validators.required],
-    //   category: [this.value.category, Validators.required],
-    //   price: [this.value.price, [Validators.required, Validators.min(0.0)]],
-    //   imageUrl: ['']
-    // });
+  isSaveBtnDisabled() {
+    return !this.itemForm.valid;
   }
 
   resetForm() {
-    this.value = JSON.parse(JSON.stringify(this.emptyItem));
+    this.itemForm.reset();
   }
 
   onClickShowDialog() {
@@ -92,14 +65,24 @@ export class AddItemDialog implements OnInit{
     })
   }
 
+  onFileUpload(event: any) {
+    const file = event.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+    // Отправляем файл на сервер
+    //this.http.post<{ imageUrl: string }>('/api/upload', formData).subscribe(response => {
+      //this.newItem.imageUrl = response.imageUrl; // Сохраняем URL изображения
+    //});
+  }
+
   onClickSave() {
-    // код отправки на сервер
     if (!(this.itemForm) || this.itemForm.valid) {
-      console.log('New Item:', this.itemForm);
       this.visible = false;
-      // Здесь можно вызвать сервис для сохранения нового элемента
-    } else {
-      console.log('Invalid form');
+      this.itemApiService.createItem(this.itemForm.value).subscribe(() => {
+        this.itemAdded.emit(this.itemForm.value);
+        this.cRef.detectChanges();
+      });
     }
   };
 }

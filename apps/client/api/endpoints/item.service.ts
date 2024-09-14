@@ -10,4 +10,8 @@ export class ItemApiService {
   getItems(): Observable<Item[]> {
     return this.apiService.get<Item[]>('/item');
   }
+
+  createItem(item: Partial<Item>): Observable<Item> {
+    return this.apiService.post('/item', item)
+  }
 }
